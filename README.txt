@@ -1,6 +1,6 @@
 === Free Shipping Kit ===
 Contributors: mcarter76
-Donate link: https://www.kahoycrafts.com
+Donate link: https://www.kahoycrafts.com/wordpress-plugin-donation/
 Tags: free shipping badge, woocommerce free shipping, free shipping, flat rate shipping, per product free shipping, product based free shipping, e-commerce
 Requires at least: 5.6
 Tested up to: 5.8
@@ -15,7 +15,7 @@ Display a per product FREE Shipping badge on WooCommerce product category and de
 
 This plugin was designed to address the inability of similar free shipping plugins, to assign a free shipping badge at the product level. 
 
-There are several existing options for assigning free shipping based on the cart subtotal, but I wanted a convenient way to integrate a free shipping badge with a flat-rate based free shipping class. This is similar to the free shipping options available in marketplaces like Etsy where the shipping costs are factored into the price of the item. This also works well for lightweight items, where the shipping cost is less significant.
+There are several existing options for assigning free shipping based on the cart subtotal, but I wanted a convenient way to integrate a free shipping badge with a simple flat-rate based free shipping class. This is similar to the free shipping options available in marketplaces like Etsy where the shipping costs are factored into the price of the item. This also works well for lightweight items, where the shipping cost is less significant.
 
 This plugin allows a user to do the following:
 
@@ -34,26 +34,30 @@ e.g.
 1. Go to the settings page: WooCommerce > Settings > Shipping > Free Shipping Kit
 1. Configure the free shipping badge and all optional settings
 1. Navigate to the "Shipping" tab of any product and enable the "Free Shipping badge"
-1. Be sure to configure a "Free shipping" class and configure a shipping zone
-1. **The base shipping cost must be zero as well as the shipping class cost to function correctly
+1. Be sure to configure a "Free shipping" class and shipping zones
+1. Assign the newly created "Free shipping" class to all intended products
+1. **The base shipping cost must be zero as well as the shipping class cost for free shipping to function correctly
 
 == Frequently Asked Questions ==
 
 = Can the styles for the FREE shipping badge be overridden =
 
-Yes, please override the .free-shipping class in your own stylesheet or via the "Additional CSS" section of the appearance editor.
+Yes, please feel free (pun intended?) to override the .free-shipping class in a custom stylesheet or via the "Additional CSS" section of the appearance editor.
+
+= What if my cart contains products that have both free and non-free shipping =
+
+The shipping cost will be greater than zero and the "Free shipping" label is not displayed.
 
 = What about the freeshippingkit_files directory =
 
-This folder is used for caching dynamic stylesheets and is removed after the plugin is deactivated.
+This folder is used for caching dynamic stylesheets and is removed during deactivation.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Main Settings in WooCommerce.
+2. Main Settings (Cart Configuration) in WooCommerce.
+3. Product Settings.
+4. Example Flat Rate Settings.
 
 == Changelog ==
 

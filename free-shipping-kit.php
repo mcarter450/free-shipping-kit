@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Free Shipping Kit
  * Plugin URI:        https://www.kahoycrafts.com/free-shipping-kit
- * Description:       Display a per product FREE Shipping badge on WooCommerce product category and detail pages.
+ * Description:       Display a FREE Shipping badge on WooCommerce product category and detail pages.
  * Version:           1.0.0
  * Author:            Mike Carter
  * Author URI:        https://www.kahoycrafts.com

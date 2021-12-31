@@ -160,7 +160,7 @@ CSS;
 			'name'   => __( 'Custom Label', 'woocommerce' ),
 			'id'     => 'fskit_show_custom_label',
 			'type'   => 'checkbox',
-			'desc'   => __( 'Show custom label in cart instead of ugly "Flat rate" text', 'woocommerce' ),
+			'desc'   => __( 'Show custom "FREE shipping" label in cart', 'woocommerce' ),
 		);
 		$settings[] = array(
 			'name'   => __( 'Free Shipping Label', 'woocommerce' ),

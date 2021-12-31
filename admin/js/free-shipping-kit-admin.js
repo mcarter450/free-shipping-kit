@@ -15,7 +15,7 @@
 						<ul class="woocommerce-shipping-methods">
 							<li>
 								<input type="radio" disabled="disabled" class="shipping_method" checked="checked">
-								<label id="free_shipping_label">FREE shipping</label>
+								<label id="free_shipping_label">Flat rate</label>
 							</li>
 							<li class="hide-in-preview">
 								<input type="radio" disabled="disabled" class="shipping_method">
@@ -54,6 +54,18 @@
 			}
 		});
 
+		$('#fskit_show_custom_label').on('change', function(e) {
+			var $freeshipping_label = $('#fskit_freeshipping_label');
+			if ( $(this).is(":checked") ) {
+				$freeshipping_label.prop('disabled', false);
+				var label = $('#fskit_freeshipping_label').val();
+				$('#free_shipping_label').text(label);
+			} else {
+				$freeshipping_label.prop('disabled', true);
+				$('#free_shipping_label').text('Flat rate');
+			}
+		});
+
 		/**
 		 * Initialize cart preview widget
 		 */
@@ -67,9 +79,16 @@
 			}
 
 			var label = $('#fskit_freeshipping_label').val();
-			if (label) {
+			if ( !label ) {
+				$('#fskit_freeshipping_label').val('FREE shipping');
+			}
+
+			if ( !$('#fskit_show_custom_label').is(":checked") ) {
+				$('#fskit_freeshipping_label').prop('disabled', true);
+			} else {
 				$('#free_shipping_label').text(label);
 			}
+
 		})();
 		
 		// Timeout reference
