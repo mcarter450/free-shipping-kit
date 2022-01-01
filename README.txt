@@ -61,5 +61,5 @@ This folder is used for caching dynamic stylesheets and is removed during deacti
 
 == Changelog ==
 
-= 1.0 - 2021-12-30 =
+= 1.0.0 - 2021-12-30 =
 * First release!
