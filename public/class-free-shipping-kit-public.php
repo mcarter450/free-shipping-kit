@@ -41,14 +41,6 @@ class Free_Shipping_Kit_Public {
 	private $version;
 
 	/**
-	 * Storage folder
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 */
-	const PLUGIN_STORAGE_FOLDER = '/freeshippingkit_files';
-
-	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -70,7 +62,7 @@ class Free_Shipping_Kit_Public {
 	 * @param object $method
 	 * @return string 	Label text
 	 */
-	public function shipping_method_full_label($label, $method) {
+	public function shipping_method_full_label( $label, $method ) {
 
 		if ( $method->method_id == 'flat_rate' && $method->get_cost() == 0 ) {
 
@@ -93,7 +85,7 @@ class Free_Shipping_Kit_Public {
 	 * @param array $rates Array of rates found for the package.
 	 * @return array 	Array of rates
 	 */
-	public function woocommerce_package_rates($rates, $package) {
+	public function woocommerce_package_rates( $rates, $package ) {
 
 		$hide_tablerate_shipping = get_option( 'fskit_hide_tablerate_shipping' );
 
@@ -133,9 +125,11 @@ class Free_Shipping_Kit_Public {
 	function product_post_class( $classes, $product ) {
 
 		$free_shipping = get_post_meta( $product->id, '_product_free_shipping_badge', true );
-		if (isset($free_shipping) and $free_shipping == 'yes') {
+
+		if ( isset($free_shipping) and $free_shipping == 'yes' ) {
 			$classes[] = 'free-shipping-badge';
 		}
+
 		return $classes;
 		
 	}
@@ -148,7 +142,23 @@ class Free_Shipping_Kit_Public {
 	public function enqueue_styles() {
 
 		if ( class_exists( 'WooCommerce' ) && (is_shop() || is_product() || is_product_category()) ) {
-			wp_enqueue_style( $this->plugin_name, content_url() . self::PLUGIN_STORAGE_FOLDER .'/free-shipping-kit-public.css', array(), $this->version, 'all' );
+
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) .'css/free-shipping-kit-public.css', array(), $this->version, 'all' );
+
+			$txt_color = sanitize_hex_color( get_option( 'fskit_txt_color' ) );
+			$bg_color = sanitize_hex_color( get_option( 'fskit_bg_color' ) );
+
+			$css_data = ".free-shipping {\n";
+			if ( $txt_color ) {
+				$css_data .= "\tcolor: {$txt_color};\n";
+			}
+			if ( $bg_color ) {
+				$css_data .= "\tbackground-color: {$bg_color};\n";
+			}
+			$css_data .= "}\n";
+
+			// Override free shipping badge colors with inline stylesheet
+			wp_add_inline_style( $this->plugin_name, $css_data );
 		}
 
 	}
@@ -161,6 +171,7 @@ class Free_Shipping_Kit_Public {
 	public function enqueue_scripts() {
 
 		if ( class_exists( 'WooCommerce' ) && (is_shop() || is_product() || is_product_category()) ) {
+			
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/free-shipping-kit-public.js', array( 'jquery' ), $this->version, true );
 		}
 		

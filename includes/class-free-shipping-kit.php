@@ -155,9 +155,9 @@ class Free_Shipping_Kit {
 		if ( is_admin() ) {
 			$plugin_admin = new Free_Shipping_Kit_Admin( $this->get_plugin_name(), $this->get_version() );
 
-			$tab = $_GET['tab'];
-			$page = $_GET['page'];
-			$section = $_GET['section'];
+			$tab = esc_html($_GET['tab']);
+			$page = esc_html($_GET['page']);
+			$section = esc_html($_GET['section']);
 
 			if ($page == 'wc-settings' and $tab == 'shipping' and $section == 'fskit') {
 				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
@@ -166,7 +166,6 @@ class Free_Shipping_Kit {
 
 			$this->loader->add_filter( 'woocommerce_get_sections_shipping', $plugin_admin, 'fskit_add_section', 10, 2 );
 			$this->loader->add_filter( 'woocommerce_get_settings_shipping', $plugin_admin, 'fskit_all_settings', 10, 2 );
-			$this->loader->add_action( 'woocommerce_settings_save_shipping', $plugin_admin, 'fskit_settings_saved', 10, 1 );
 			$this->loader->add_action( 'woocommerce_product_options_shipping', $plugin_admin, 'woocommerce_product_custom_fields', 10, 1);
 			$this->loader->add_action('woocommerce_process_product_meta', $plugin_admin, 'woocommerce_product_custom_fields_save', 10, 1);
 		}

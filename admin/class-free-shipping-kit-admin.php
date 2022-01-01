@@ -41,14 +41,6 @@ class Free_Shipping_Kit_Admin {
 	private $version;
 
 	/**
-	 * Plugin storage folder location
-	 *
-	 * @since    1.0.0
-	 * @access   public
-	 */
-	const PLUGIN_STORAGE_FOLDER = WP_CONTENT_DIR . '/freeshippingkit_files';
-
-	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -70,48 +62,10 @@ class Free_Shipping_Kit_Admin {
 	 * @return array Sections
 	 */
 	public function fskit_add_section( $sections ) {
+		
 		$sections['fskit'] = __( 'Free Shipping Kit', 'woocommerce' );
 		return $sections;
 		
-	}
-
-	/**
-	 * Shipping settings saved hook
-	 *
-	 * Cache user styles to disk
-	 *
-	 * @since    1.0.0
-	 */
-	public function fskit_settings_saved() {
-
-		$txt_color = $_POST['fskit_txt_color'] ?: '#12232E'; 
-		$bg_color = $_POST['fskit_bg_color'] ?: '#d1dfe4';
-
- 		$css = <<<CSS
- /**
-  * Generated CSS file please override these styles instead
-  */
-.free-shipping {
-    display: inline-block;
-    background-color: %s;
-    color: %s;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -.02em;
-    margin-left: 10px;
-    padding: 0px 7px;
-    border-radius: 5px;
-}
-CSS;
-
-		$css = sprintf($css, $bg_color, $txt_color);
-
-		if ( file_exists(self::PLUGIN_STORAGE_FOLDER .'/free-shipping-kit-public.css') ) {
-			file_put_contents(self::PLUGIN_STORAGE_FOLDER .'/free-shipping-kit-public.css', $css);
-		}
-		elseif ( touch(self::PLUGIN_STORAGE_FOLDER .'/free-shipping-kit-public.css') ) {
-			file_put_contents(self::PLUGIN_STORAGE_FOLDER .'/free-shipping-kit-public.css', $css);
-		}
 	}
 
 	/**
@@ -207,7 +161,8 @@ CSS;
 	 */
 	public function woocommerce_product_custom_fields_save( $post_id ) {
 
-	    $free_shipping_badge_checkbox = $_POST['_product_free_shipping_badge'];
+	    $free_shipping_badge_checkbox = esc_attr($_POST['_product_free_shipping_badge']);
+
 	    update_post_meta($post_id, '_product_free_shipping_badge', $free_shipping_badge_checkbox);
 
 	}

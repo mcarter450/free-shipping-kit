@@ -78,14 +78,12 @@
 				$hide_in_preview.show();
 			}
 
-			var label = $('#fskit_freeshipping_label').val();
-			if ( !label ) {
-				$('#fskit_freeshipping_label').val('FREE shipping');
-			}
+			var label = $('#fskit_freeshipping_label').val() || 'FREE shipping';
 
 			if ( !$('#fskit_show_custom_label').is(":checked") ) {
 				$('#fskit_freeshipping_label').prop('disabled', true);
 			} else {
+				$('#fskit_freeshipping_label').val(label);
 				$('#free_shipping_label').text(label);
 			}
 
