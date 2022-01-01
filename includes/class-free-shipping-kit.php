@@ -67,6 +67,7 @@ class Free_Shipping_Kit {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+
 		if ( defined( 'FREE_SHIPPING_KIT_VERSION' ) ) {
 			$this->version = FREE_SHIPPING_KIT_VERSION;
 		} else {
@@ -153,6 +154,7 @@ class Free_Shipping_Kit {
 	private function define_admin_hooks() {
 
 		if ( is_admin() ) {
+
 			$plugin_admin = new Free_Shipping_Kit_Admin( $this->get_plugin_name(), $this->get_version() );
 
 			$tab = esc_html($_GET['tab']);
@@ -166,6 +168,7 @@ class Free_Shipping_Kit {
 
 			$this->loader->add_filter( 'woocommerce_get_sections_shipping', $plugin_admin, 'fskit_add_section', 10, 2 );
 			$this->loader->add_filter( 'woocommerce_get_settings_shipping', $plugin_admin, 'fskit_all_settings', 10, 2 );
+			$this->loader->add_filter( 'plugin_action_links_'. $this->plugin_name .'/'. $this->plugin_name .'.php', $plugin_admin, 'fskit_settings_link', 10, 2 );
 			$this->loader->add_action( 'woocommerce_product_options_shipping', $plugin_admin, 'woocommerce_product_custom_fields', 10, 1);
 			$this->loader->add_action('woocommerce_process_product_meta', $plugin_admin, 'woocommerce_product_custom_fields_save', 10, 1);
 		}
@@ -183,7 +186,6 @@ class Free_Shipping_Kit {
 
 		$plugin_public = new Free_Shipping_Kit_Public( $this->get_plugin_name(), $this->get_version() );
 
-		
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'woocommerce_package_rates', $plugin_public, 'woocommerce_package_rates', 1000, 2 );

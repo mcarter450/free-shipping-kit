@@ -58,7 +58,7 @@
 			var $freeshipping_label = $('#fskit_freeshipping_label');
 			if ( $(this).is(":checked") ) {
 				$freeshipping_label.prop('disabled', false);
-				var label = $('#fskit_freeshipping_label').val();
+				var label = $('#fskit_freeshipping_label').val() || 'FREE shipping';
 				$('#free_shipping_label').text(label);
 			} else {
 				$freeshipping_label.prop('disabled', true);
@@ -82,6 +82,7 @@
 
 			if ( !$('#fskit_show_custom_label').is(":checked") ) {
 				$('#fskit_freeshipping_label').prop('disabled', true);
+				$('#fskit_freeshipping_label').val(label);
 			} else {
 				$('#fskit_freeshipping_label').val(label);
 				$('#free_shipping_label').text(label);

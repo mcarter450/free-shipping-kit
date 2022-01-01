@@ -62,7 +62,7 @@ class Free_Shipping_Kit_Admin {
 	 * @return array Sections
 	 */
 	public function fskit_add_section( $sections ) {
-		
+
 		$sections['fskit'] = __( 'Free Shipping Kit', 'woocommerce' );
 		return $sections;
 		
@@ -126,6 +126,25 @@ class Free_Shipping_Kit_Admin {
 		$settings[] = array( 'type' => 'sectionend', 'id' => 'fskit' );
 
 		return $settings;
+
+	}
+
+	/**
+	 * Add settings link to plugins page
+	 *
+	 * @since    1.0.0
+	 * @param array $links
+	 * @return array 	Links
+	 */
+	public function fskit_settings_link( $links ) {
+
+		$link = '<a href="' .
+			admin_url( 'admin.php?page=wc-settings&tab=shipping&section=fskit' ) .
+			'">' . __('Settings') . '</a>';
+
+		array_unshift($links, $link);
+
+		return $links;
 
 	}
 
