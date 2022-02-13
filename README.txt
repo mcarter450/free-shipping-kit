@@ -5,7 +5,7 @@ Tags: free shipping badge, woocommerce free shipping, free shipping, flat rate s
 Requires at least: 5.6
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,10 @@ This folder is used for caching dynamic stylesheets and is removed during deacti
 4. Example Flat Rate Settings.
 
 == Changelog ==
+
+= 1.0.1 - 2022-01-13 =
+* Add correct text domain and spanish translations
+* Improve template logic for admin screen
 
 = 1.0.0 - 2021-12-30 =
 * First release!
