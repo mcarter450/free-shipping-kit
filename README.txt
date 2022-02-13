@@ -48,9 +48,9 @@ Yes, please feel free (pun intended?) to override the .free-shipping class in a 
 
 The shipping cost will be greater than zero and the "Free shipping" label is not displayed.
 
-= What about the freeshippingkit_files directory =
+= Is WooCommerce Flat Rate shipping required to use this plugin =
 
-This folder is used for caching dynamic stylesheets and is removed during deactivation.
+Although many of the features do apply to the use of flat rate free shipping, it is possible to display the badge for any product that you'd like. Only, the adjustments to the cart pages are specific to flat rate shipping at this time.
 
 == Screenshots ==
 
