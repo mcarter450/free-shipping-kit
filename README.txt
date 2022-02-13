@@ -50,7 +50,7 @@ The shipping cost will be greater than zero and the "Free shipping" label is not
 
 = Is WooCommerce Flat Rate shipping required to use this plugin =
 
-Although many of the features do apply to the use of flat rate free shipping, it is possible to display the badge for any product that you'd like. Only, the adjustments to the cart pages are specific to flat rate shipping at this time.
+Although many of the features do apply to the use of flat rate free shipping, it is possible to display the badge for any product that you'd like. Only the adjustments to the cart pages are specific to flat rate shipping at this time.
 
 == Screenshots ==
 
