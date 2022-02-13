@@ -3,7 +3,7 @@ Contributors: mcarter76
 Donate link: https://www.kahoycrafts.com/wordpress-plugin-donation/
 Tags: free shipping badge, woocommerce free shipping, free shipping, flat rate shipping, per product free shipping, product based free shipping, e-commerce
 Requires at least: 5.6
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPLv2 or later
