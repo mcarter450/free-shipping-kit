@@ -63,7 +63,7 @@ class Free_Shipping_Kit_Admin {
 	 */
 	public function fskit_add_section( $sections ) {
 
-		$sections['fskit'] = __( 'Free Shipping Kit', 'woocommerce' );
+		$sections['fskit'] = __( 'Free Shipping Kit', 'free-shipping-kit' );
 		return $sections;
 		
 	}
@@ -87,40 +87,40 @@ class Free_Shipping_Kit_Admin {
 		$settings = array();
 		// Add Title to the Settings
 		$settings[] = array( 
-			'name'   => __( 'Free Shipping Kit Settings', 'woocommerce' ), 
+			'name'   => __( 'Free Shipping Kit Settings', 'free-shipping-kit' ), 
 			'type'   => 'title', 
-			'desc'   => __( 'The following options are used to configure the free shipping badge and all optional settings', 'woocommerce' ), 
+			'desc'   => __( 'The following options are used to configure the free shipping badge and all optional settings', 'free-shipping-kit' ), 
 			'id'     => 'fskit' 
 		);
 		$settings[] = array(
-			'name'   => __( 'Text color', 'woocommerce' ),
+			'name'   => __( 'Text color', 'free-shipping-kit' ),
 			'id'     => 'fskit_txt_color',
 			'type'   => 'color',
 			'css'    => 'max-width:100px;',
 		);
 		$settings[] = array(
-			'name'   => __( 'Background color', 'woocommerce' ),
+			'name'   => __( 'Background color', 'free-shipping-kit' ),
 			'id'     => 'fskit_bg_color',
 			'type'   => 'color',
 			'css'    => 'max-width:100px;',
 		);
 		$settings[] = array(
-			'name'   => __( 'Shipping Methods', 'woocommerce' ),
+			'name'   => __( 'Shipping Methods', 'free-shipping-kit' ),
 			'id'     => 'fskit_hide_tablerate_shipping',
 			'type'   => 'checkbox',
-			'desc'   => __( 'Hide paid shipping methods when item has free shipping', 'woocommerce' ),
+			'desc'   => __( 'Hide paid shipping methods when item has free shipping', 'free-shipping-kit' ),
 		);
 		$settings[] = array(
-			'name'   => __( 'Custom Label', 'woocommerce' ),
+			'name'   => __( 'Custom Label', 'free-shipping-kit' ),
 			'id'     => 'fskit_show_custom_label',
 			'type'   => 'checkbox',
-			'desc'   => __( 'Show custom "FREE shipping" label in cart', 'woocommerce' ),
+			'desc'   => __( 'Show custom "FREE shipping" label in cart', 'free-shipping-kit' ),
 		);
 		$settings[] = array(
-			'name'   => __( 'Free Shipping Label', 'woocommerce' ),
+			'name'   => __( 'Free Shipping Label', 'free-shipping-kit' ),
 			'id'     => 'fskit_freeshipping_label',
 			'type'   => 'text',
-			'desc'   => __( 'Label text shown for free shipping method', 'woocommerce' ),
+			'desc'   => __( 'Label text shown for free shipping method', 'free-shipping-kit' ),
 		);
 		
 		$settings[] = array( 'type' => 'sectionend', 'id' => 'fskit' );
@@ -162,9 +162,9 @@ class Free_Shipping_Kit_Admin {
 		woocommerce_wp_checkbox(
 	        array(
 	            'id' => '_product_free_shipping_badge',
-	            'label' => __('Free Shipping badge', 'woocommerce'),
+	            'label' => __('Free Shipping badge', 'free-shipping-kit'),
 	            'desc_tip' => true,
-	            'description' => __('Display a Free Shipping badge on all category and product pages', 'woocommerce'),
+	            'description' => __('Display a Free Shipping badge on all category and product pages', 'free-shipping-kit'),
 	        )
 	    );
 
@@ -204,7 +204,9 @@ class Free_Shipping_Kit_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/free-shipping-kit-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/free-shipping-kit-admin.js', array( 'wp-i18n', 'jquery' ), $this->version, false );
+
+		wp_set_script_translations( $this->plugin_name, 'free-shipping-kit', plugin_dir_path( __DIR__ ) . 'languages/' );
 
 	}
 

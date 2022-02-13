@@ -3,15 +3,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Free Shipping Kit 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/free-shipping-kit\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/free-shipping-"
+"kit\n"
+"POT-Creation-Date: 2022-02-13T20:14:09+00:00\n"
+"PO-Revision-Date: 2022-02-13 12:17-0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-13T20:14:09+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Domain: free-shipping-kit\n"
 
 #. Plugin Name of the plugin
@@ -24,8 +27,12 @@ msgid "https://www.kahoycrafts.com/free-shipping-kit"
 msgstr ""
 
 #. Description of the plugin
-msgid "Display a FREE Shipping badge on WooCommerce product category and detail pages."
+msgid ""
+"Display a FREE Shipping badge on WooCommerce product category and detail "
+"pages."
 msgstr ""
+"Muestre una insignia de envío GRATIS en la categoría de productos de "
+"WooCommerce y en las páginas de detalles."
 
 #. Author of the plugin
 msgid "Mike Carter"
@@ -37,88 +44,95 @@ msgstr ""
 
 #: admin/class-free-shipping-kit-admin.php:90
 msgid "Free Shipping Kit Settings"
-msgstr ""
+msgstr "Configuración del kit de envío gratuito"
 
 #: admin/class-free-shipping-kit-admin.php:92
-msgid "The following options are used to configure the free shipping badge and all optional settings"
+msgid ""
+"The following options are used to configure the free shipping badge and all "
+"optional settings"
 msgstr ""
+"Las siguientes opciones se utilizan para configurar la insignia de envío "
+"gratis y todas las configuraciones opcionales"
 
 #: admin/class-free-shipping-kit-admin.php:96
 msgid "Text color"
-msgstr ""
+msgstr "Color de texto"
 
 #: admin/class-free-shipping-kit-admin.php:102
 msgid "Background color"
-msgstr ""
+msgstr "Color de fondo"
 
 #: admin/class-free-shipping-kit-admin.php:108
 msgid "Shipping Methods"
-msgstr ""
+msgstr "Métodos de envío"
 
 #: admin/class-free-shipping-kit-admin.php:111
 msgid "Hide paid shipping methods when item has free shipping"
-msgstr ""
+msgstr "Ocultar métodos de envío pagados cuando el artículo tiene envío gratis"
 
 #: admin/class-free-shipping-kit-admin.php:114
 msgid "Custom Label"
-msgstr ""
+msgstr "Etiqueta personalizada"
 
 #: admin/class-free-shipping-kit-admin.php:117
 msgid "Show custom \"FREE shipping\" label in cart"
-msgstr ""
+msgstr "Mostrar la etiqueta personalizada “Envío GRATIS” en el carrito"
 
 #: admin/class-free-shipping-kit-admin.php:120
 msgid "Free Shipping Label"
-msgstr ""
+msgstr "Etiqueta de envío gratis"
 
 #: admin/class-free-shipping-kit-admin.php:123
 msgid "Label text shown for free shipping method"
-msgstr ""
+msgstr "Texto de la etiqueta que se muestra para el método de envío gratuito"
 
 #: admin/class-free-shipping-kit-admin.php:165
 msgid "Free Shipping badge"
-msgstr ""
+msgstr "Insignia de envío gratis"
 
 #: admin/class-free-shipping-kit-admin.php:167
 msgid "Display a Free Shipping badge on all category and product pages"
 msgstr ""
+"Muestre una insignia de envío gratis en todas las páginas de categorías y "
+"productos"
 
 #: public/class-free-shipping-kit-public.php:73
 msgid "FREE shipping"
-msgstr ""
+msgstr "Envío gratis"
 
 #: admin/js/free-shipping-kit-admin.js:55
 msgid "Cart (Example Preview)"
-msgstr ""
+msgstr "Carrito (Vista previa de ejemplo)"
 
 #: admin/js/free-shipping-kit-admin.js:56
 msgid "Shipping"
-msgstr ""
+msgstr "Transporte"
 
 #: admin/js/free-shipping-kit-admin.js:57
 msgid "Flat rate"
-msgstr ""
+msgstr "Tarifa plana"
 
 #: admin/js/free-shipping-kit-admin.js:58
 msgid "USPS (First-Class Package)"
-msgstr ""
+msgstr "USPS (paquete de primera clase)"
 
 #: admin/js/free-shipping-kit-admin.js:59
 msgid "USPS (Priority Mail)"
-msgstr ""
+msgstr "USPS (Correo Prioritario)"
 
 #: admin/js/free-shipping-kit-admin.js:60
 msgid "Local pickup"
-msgstr ""
+msgstr "Recogida local"
 
 #: admin/js/free-shipping-kit-admin.js:61
 msgid "Shipping to"
-msgstr ""
+msgstr "Embarcar hacia"
 
 #: admin/js/free-shipping-kit-admin.js:62
 msgid "Beverly Hills, CA 90210"
 msgstr ""
 
+#: admin/js/free-shipping-kit-admin.js:69
 #: public/js/free-shipping-kit-public.js:13
 msgid "Free Shipping"
-msgstr ""
+msgstr "Envío Gratis"

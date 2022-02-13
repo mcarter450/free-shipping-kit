@@ -70,7 +70,7 @@ class Free_Shipping_Kit_Public {
 			$freeshipping_label = get_option( 'fskit_freeshipping_label' );
 
 			if ( isset($show_custom_label) and $show_custom_label == 'yes' ) {
-				return !empty($freeshipping_label) ? $freeshipping_label : 'FREE shipping';
+				return !empty($freeshipping_label) ? $freeshipping_label : __('FREE shipping', 'free-shipping-kit');
 			}
 		}
 
@@ -172,7 +172,10 @@ class Free_Shipping_Kit_Public {
 
 		if ( class_exists( 'WooCommerce' ) && (is_shop() || is_product() || is_product_category()) ) {
 			
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/free-shipping-kit-public.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/free-shipping-kit-public.js', array( 'wp-i18n', 'jquery' ), $this->version, true );
+
+			wp_set_script_translations( $this->plugin_name, 'free-shipping-kit', plugin_dir_path( __DIR__ ) . 'languages/' );
+
 		}
 		
 	}

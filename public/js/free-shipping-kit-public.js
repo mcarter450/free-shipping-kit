@@ -1,6 +1,8 @@
 (function( $ ) {
 	'use strict';
 
+	const { __, _x, _n, sprintf } = wp.i18n;
+
 	jQuery(document).ready(function($) {
 
 		/**
@@ -8,7 +10,7 @@
 		 */
 		var $product_price = $('.entry.product.free-shipping-badge .price');
 		if ( $product_price.length ) {
-			$product_price.append('<span class="free-shipping">Free Shipping</span>');
+			$product_price.append('<span class="free-shipping">'+ __('Free Shipping', 'free-shipping-kit') +'</span>');
 		}
 
 	});
