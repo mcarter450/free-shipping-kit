@@ -3,9 +3,16 @@
 
 	const { __, _x, _n, sprintf } = wp.i18n;
 
+	// Global timeout reference
+	var timeout;
+
+	/**
+	 * @param {object} labels
+	 * @return {string} The html with template vars applied
+	 */
 	function get_cart_preview_template(labels) {
 
-		var html = `
+		let html = `
 		<div class="fskit-cart-preview cart_totals calculated_shipping">
 			<div class="preview-container">
 				<h2>${labels[0]}</h2>
@@ -45,13 +52,90 @@
 
 	}
 
+	/**
+	 * @param {object} labels
+	 * @return {string} The html with template vars applied
+	 */
 	function get_button_preview_template(labels) {
 		return `<div class="fskit-preview"><span class="free-shipping">${labels[0]}</span></div>`;
 	}
 
+	/**
+	 * @param {object} 	jQuery event object
+	 */
+	function change_hide_table_rate_shipping(e) {
+
+		let $hide_in_preview = $('.fskit-cart-preview .hide-in-preview');
+		if ( $(this).is(":checked") ) {
+			$hide_in_preview.hide();
+		} else {
+			$hide_in_preview.show();
+		}
+
+	}
+
+	/**
+	 * @param {object} 	jQuery event object
+	 */
+	function  change_show_custom_label(e) {
+
+		let $freeshipping_label = $('#fskit_freeshipping_label');
+
+		if ( $(this).is(":checked") ) {
+			$freeshipping_label.prop('disabled', false);
+			$('#free_shipping_label').text( $freeshipping_label.val() );
+		} else {
+			$freeshipping_label.prop('disabled', true);
+			$('#free_shipping_label').text( __('Flat rate', 'free-shipping-kit') );
+		}
+
+	}
+
+	/**
+	 * @param {object} 	jQuery event object
+	 */
+	function keyup_free_shipping_label(e) {
+
+		let label = $(this).val();
+		clearTimeout(timeout);
+		timeout = setTimeout(function() {
+			$('#free_shipping_label').text(label);
+		}, 500);
+
+	}
+
+	/**
+	 * @param {object} event 	jQuery event object
+	 * @param {object} ui 		jQuery UI object, with a color member containing a Color.js object
+	 */
+	function change_widget_txt_color(event, ui) {
+
+		let color = ui.color.toString();
+		$(this).prev('.colorpickpreview').css( 'background-color', color );
+
+		$('.free-shipping').css( 'color', color );
+
+	}
+
+	/**
+	 * @param {object} event 	jQuery event object
+	 * @param {object} ui 		jQuery UI object, with a color member containing a Color.js object
+	 */
+	function change_widget_bg_color(event, ui) {
+
+		let color = ui.color.toString();
+		$(this).prev('.colorpickpreview').css( 'background-color', color );
+
+		$('.free-shipping').css( 'background-color', color );
+		
+	}
+
+	/**
+	 * Handle dom ready event
+	 */
 	jQuery(document).ready(function($) {
 
-		var labels = [
+		let labels = [
 			__('Cart (Example Preview)', 'free-shipping-kit'),
 			__('Shipping', 'free-shipping-kit'),
 			__('Flat rate', 'free-shipping-kit'),
@@ -62,114 +146,89 @@
 			__('Beverly Hills, CA 90210', 'free-shipping-kit')
 		];
 
-		var cart_preview_html = get_cart_preview_template(labels);
+		let cart_preview_html = get_cart_preview_template(labels);
 
 
 		labels = [
 			__('Free Shipping', 'free-shipping-kit')
 		];
 
-		var button_preview_html = get_button_preview_template(labels);
+		let button_preview_html = get_button_preview_template(labels);
 
 		/**
 		 * Additional markup for free shipping badge preview and cart simulation
 		 */
-		$('#fskit-description').next('table').after(cart_preview_html);
-		$('#fskit-description').after(button_preview_html);
-		
-		$('#fskit_hide_tablerate_shipping').on('change', function(e) {
-			var $hide_in_preview = $('.fskit-cart-preview .hide-in-preview');
-			if ( $(this).is(":checked") ) {
-				$hide_in_preview.hide();
-			} else {
-				$hide_in_preview.show();
-			}
-		});
+		let $fskit_description = $('#fskit-description');
 
-		$('#fskit_show_custom_label').on('change', function(e) {
-			var $freeshipping_label = $('#fskit_freeshipping_label');
-			if ( $(this).is(":checked") ) {
-				$freeshipping_label.prop('disabled', false);
-				var label = $('#fskit_freeshipping_label').val() || __('Free Shipping', 'free-shipping-kit');
-				$('#free_shipping_label').text(label);
-			} else {
-				$freeshipping_label.prop('disabled', true);
-				$('#free_shipping_label').text( __('Flat rate', 'free-shipping-kit') );
-			}
-		});
+		$fskit_description.next('table').after(cart_preview_html);
+		$fskit_description.after(button_preview_html);
+		
+		$('#fskit_hide_tablerate_shipping').on('change', change_hide_table_rate_shipping);
+
+		$('#fskit_show_custom_label').on('change', change_show_custom_label);
 
 		/**
 		 * Initialize cart preview widget
 		 */
 		(function() {
 
-			var $hide_in_preview = $('.fskit-cart-preview .hide-in-preview');
+			let $hide_in_preview = $('.fskit-cart-preview .hide-in-preview');
+
 			if ( $('#fskit_hide_tablerate_shipping').is(":checked") ) {
 				$hide_in_preview.hide();
 			} else {
 				$hide_in_preview.show();
 			}
 
-			var label = $('#fskit_freeshipping_label').val() || __('FREE shipping', 'free-shipping-kit');
+			let $fskit_freeshipping_label = $('#fskit_freeshipping_label');
 
-			if ( !$('#fskit_show_custom_label').is(":checked") ) {
-				$('#fskit_freeshipping_label').prop('disabled', true);
-				$('#fskit_freeshipping_label').val(label);
+			$fskit_freeshipping_label.val(function( index, value ) {
+				if (value) {
+					return value;
+				}
+
+				return __('FREE shipping', 'free-shipping-kit'); // Default value
+			});
+
+			if (! $('#fskit_show_custom_label').is(":checked") ) {
+				$fskit_freeshipping_label.prop('disabled', true);
+				
 			} else {
-				$('#fskit_freeshipping_label').val(label);
-				$('#free_shipping_label').text(label);
+				$('#free_shipping_label').text( $fskit_freeshipping_label.val() );
 			}
 
 		})();
-		
-		// Timeout reference
-		var timeout;
 
-		$('#fskit_freeshipping_label').on('keyup', function(e) {
-			var label = $(this).val();
-			clearTimeout(timeout);
-			timeout = setTimeout(function() {
-				$('#free_shipping_label').text(label);
-			}, 500);
-		})
+		$('#fskit_freeshipping_label').on('keyup', keyup_free_shipping_label)
 
 		/**
 		 * Timeout for text color event
 		 */
 		setTimeout(function() {
-			var color = $('#fskit_txt_color').iris('color') || '#12232E';
-			$('.free-shipping').css('color', color);
-			$('#fskit_txt_color').iris({
-			    change: function(event, ui) {
-			        // event = standard jQuery event, produced by whichever control was changed.
-			        // ui = standard jQuery UI object, with a color member containing a Color.js object
-			        var color = ui.color.toString();
-			        $(this).prev('.colorpickpreview').css( 'background-color', color );
 
-			        $('.free-shipping').css( 'color', color );
-			    }
-			}); 
+			let color = $('#fskit_txt_color').iris('color') || '#12232E';
+			$('.free-shipping').css('color', color);
+
+			$('#fskit_txt_color').iris({
+				change: change_widget_txt_color
+			});
+
 		}, 1000);
 
 		/**
 		 * Timeout for background color event
 		 */
 		setTimeout(function() {
-			var color = $('#fskit_bg_color').iris('color') || '#d1dfe4';
-			$('.free-shipping').css('background-color', color);
-			$('#fskit_bg_color').iris({
-		    	change: function(event, ui) {
-			        // event = standard jQuery event, produced by whichever control was changed.
-			        // ui = standard jQuery UI object, with a color member containing a Color.js object
-			        var color = ui.color.toString();
-			        $(this).prev('.colorpickpreview').css( 'background-color', color );
 
-			        $('.free-shipping').css( 'background-color', color );
-			    }
-			}); 
+			let color = $('#fskit_bg_color').iris('color') || '#d1dfe4';
+			$('.free-shipping').css('background-color', color);
+
+			$('#fskit_bg_color').iris({
+				change: change_widget_bg_color
+			});
+
 		}, 1000);
 
 	});
 
 })( jQuery );
-
