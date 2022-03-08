@@ -8,9 +8,8 @@
 		/**
 		 * Append free shipping badge to products that have a free_shipping tag
 		 */
-		var $product_price = $('.entry.product.free-shipping-badge .price');
+		let $product_price = $('.entry.product.free-shipping-badge .price');
 		if ( $product_price.length ) {
-			// Avoided using ES6 syntax here in case browser is outdated
 			$product_price.append('<span class="free-shipping">'+ __('Free Shipping', 'free-shipping-kit') +'</span>');
 		}
 

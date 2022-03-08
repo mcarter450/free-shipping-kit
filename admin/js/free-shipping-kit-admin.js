@@ -15,7 +15,7 @@
 		let html = `
 		<div class="fskit-cart-preview cart_totals calculated_shipping">
 			<div class="preview-container">
-				<h2>${labels[0]}</h2>
+				<h3>${labels[0]}</h3>
 				<table cellspacing="0" class="shop_table shop_table_responsive">
 				<tbody>
 					<tr class="woocommerce-shipping-totals shipping">
@@ -57,7 +57,18 @@
 	 * @return {string} The html with template vars applied
 	 */
 	function get_button_preview_template(labels) {
-		return `<div class="fskit-preview"><span class="free-shipping">${labels[0]}</span></div>`;
+
+		let html = `
+		
+		<div class="fskit-preview">
+			<h3>Badge Preview</h3>
+			<div class="preview-container">
+				<span class="free-shipping">${labels[0]}</span>
+			</div>
+		</div>`;
+
+		return html;
+
 	}
 
 	/**
@@ -136,14 +147,14 @@
 	jQuery(document).ready(function($) {
 
 		let labels = [
-			__('Cart (Example Preview)', 'free-shipping-kit'),
+			__('Cart Preview', 'free-shipping-kit'),
 			__('Shipping', 'free-shipping-kit'),
 			__('Flat rate', 'free-shipping-kit'),
 			__('USPS (First-Class Package)', 'free-shipping-kit'),
 			__('USPS (Priority Mail)', 'free-shipping-kit'),
 			__('Local pickup', 'free-shipping-kit'),
 			__('Shipping to', 'free-shipping-kit'),
-			__('Beverly Hills, CA 90210', 'free-shipping-kit')
+			__('Twin Peaks, WA 98065', 'free-shipping-kit')
 		];
 
 		let cart_preview_html = get_cart_preview_template(labels);

@@ -3,13 +3,13 @@
  * included in this file.
  */
  .free-shipping {
-    display: inline-block;
-    background-color: #d1dfe4;
-    color: #12232E;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -.02em;
-    margin-left: 10px;
-    padding: 0px 7px;
-    border-radius: 5px;
+	display: inline-block;
+	background-color: #d1dfe4;
+	color: #12232E;
+	font-size: 1rem;
+	font-weight: 600;
+	letter-spacing: -.02em;
+	margin-left: 10px;
+	padding: 0px 7px;
+	border-radius: 5px;
 }
