@@ -157,9 +157,9 @@ class Free_Shipping_Kit {
 
 			$plugin_admin = new Free_Shipping_Kit_Admin( $this->get_plugin_name(), $this->get_version() );
 
-			$tab = sanitize_key( $_GET['tab'] );
-			$page = sanitize_key( $_GET['page'] );
-			$section = sanitize_key( $_GET['section'] );
+			$tab =  isset($_GET['tab']) ? sanitize_key( $_GET['tab'] ) : '';
+			$page = isset($_GET['page']) ? sanitize_key( $_GET['page'] ) : '';
+			$section = isset($_GET['section']) ? sanitize_key( $_GET['section'] ) : '';
 
 			if ($page == 'wc-settings' and $tab == 'shipping' and $section == 'fskit') {
 				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );

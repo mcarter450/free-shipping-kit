@@ -180,9 +180,9 @@ class Free_Shipping_Kit_Admin {
 	 */
 	public function woocommerce_product_custom_fields_save( $post_id ) {
 
-	    $free_shipping_badge_checkbox = sanitize_key( $_POST['_product_free_shipping_badge'] );
-
-	    update_post_meta( $post_id, '_product_free_shipping_badge', $free_shipping_badge_checkbox );
+	    if ( isset( $_POST['_product_free_shipping_badge'] ) ) {
+	    	update_post_meta( $post_id, '_product_free_shipping_badge', sanitize_key( $_POST['_product_free_shipping_badge'] ) );
+		}
 
 	}
 

@@ -124,7 +124,7 @@ class Free_Shipping_Kit_Public {
 	 */
 	function product_post_class( $classes, $product ) {
 
-		$free_shipping = get_post_meta( $product->id, '_product_free_shipping_badge', true );
+		$free_shipping = get_post_meta( $product->get_id(), '_product_free_shipping_badge', true );
 
 		if ( isset($free_shipping) and $free_shipping == 'yes' ) {
 			$classes[] = 'free-shipping-badge';
