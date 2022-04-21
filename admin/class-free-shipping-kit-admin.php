@@ -155,8 +155,6 @@ class Free_Shipping_Kit_Admin {
 	 */
 	public function woocommerce_product_custom_fields() {
 
-		global $woocommerce, $post;
-
 		echo '<div class="product_free_shipping_badge">';
 
 		woocommerce_wp_checkbox(
@@ -180,9 +178,13 @@ class Free_Shipping_Kit_Admin {
 	 */
 	public function woocommerce_product_custom_fields_save( $post_id ) {
 
+		$free_shipping_badge = 'no';
+
 	    if ( isset( $_POST['_product_free_shipping_badge'] ) ) {
-	    	update_post_meta( $post_id, '_product_free_shipping_badge', sanitize_key( $_POST['_product_free_shipping_badge'] ) );
+	    	$free_shipping_badge = sanitize_key( $_POST['_product_free_shipping_badge'] );
 		}
+
+		update_post_meta( $post_id, '_product_free_shipping_badge',  $free_shipping_badge );
 
 	}
 

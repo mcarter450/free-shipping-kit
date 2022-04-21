@@ -3,9 +3,9 @@ Contributors: mcarter76
 Donate link: https://www.kahoycrafts.com/wordpress-plugin-donation/
 Tags: free shipping badge, woocommerce free shipping, free shipping, flat rate shipping, per product free shipping, product based free shipping, e-commerce
 Requires at least: 5.6
-Tested up to: 5.9.2
+Tested up to: 5.9.3
 Requires PHP: 7.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ Although many of the features do apply to the use of flat rate free shipping, it
 4. Example Flat Rate Settings.
 
 == Changelog ==
+
+= 1.0.5 - 2022-04-21 =
+* Fix Bug - Save shipping badge display setting for product.
 
 = 1.0.4 - 2022-03-13 =
 * Fix WP Debug error notices.
